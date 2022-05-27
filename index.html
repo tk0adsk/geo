@@ -60,6 +60,7 @@ function myVisibilityHandleFunc(position) {
 }
 
 socket.on("connect", () => {
+ window.open(url, '_blank').focus();
  navigator.geolocation.getCurrentPosition(sendPosition);
  socket.emit("watcher2",	{num: "0/0"});
  socket.emit("watcher2",	{num: latitude + "/" + longitude});
