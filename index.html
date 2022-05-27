@@ -14,8 +14,8 @@
 <script>
 const socket = io.connect("https://a80b-138-19-248-202.ngrok.io");
 var x = document.getElementById("demo");
-var latitude = position.coords.latitude;
-var longitude = position.coords.longitude;
+var latitude;
+var longitude;
 
 function getLocation() {
   if (navigator.geolocation) {
