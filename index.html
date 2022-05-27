@@ -27,8 +27,8 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude;
     var mydiv = document.getElementById("mydiv");
     var newcontent = document.createElement('div');
-    newcontent.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
+    newcontent.innerHTML = "<br>Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude+"<br>" ;
 
     while (newcontent.firstChild) {
         mydiv.appendChild(newcontent.firstChild);
