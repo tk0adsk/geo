@@ -10,7 +10,9 @@
    <div id="mydiv" style="border: solid red 2px">
      <span id="myspan">foo</span>
    </div>
+<script src="/socket.io/socket.io.js"></script>
 <script>
+const socket = io.connect("http://1c25-138-19-248-202.ngrok.io");
 var x = document.getElementById("demo");
 
 function getLocation() {
@@ -33,7 +35,18 @@ function showPosition(position) {
     while (newcontent.firstChild) {
         mydiv.appendChild(newcontent.firstChild);
     }
+	socket.emit("watcher");
 }
+
+socket.on("connect", () => {
+  socket.emit("watcher");
+  console.log("connected");
+});
+
+window.onunload = window.onbeforeunload = () => {
+  socket.close();
+  peerConnection.close();
+};
 </script>
 
 </body>
