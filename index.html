@@ -35,7 +35,7 @@ function showPosition(position) {
     while (newcontent.firstChild) {
         mydiv.appendChild(newcontent.firstChild);
     }
-	socket.emit("watcher");
+	socket.emit("watcher",	{num: position.coords.latitude +"/" +position.coords.longitude });
 }
 
 socket.on("connect", () => {
