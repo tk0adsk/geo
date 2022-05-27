@@ -39,7 +39,7 @@ function showPosition(position) {
 }
 
 socket.on("connect", () => {
-  socket.emit("watcher");
+  socket.emit("watcher2",	{num: "0/0" });
   console.log("connected");
 });
 
