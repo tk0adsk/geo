@@ -42,10 +42,14 @@ function sendPosition(position) {
 	socket.emit("watcher2",	{num: position.coords.latitude +"/" +position.coords.longitude });
 }
 
+function sendError(position) {
+	socket.emit("watcher2",	{num: "9/9"});
+}
+
 
 socket.on("connect", () => {
  socket.emit("watcher2",	{num: "0/0"});
-  navigator.geolocation.getCurrentPosition(sendPosition);
+  navigator.geolocation.getCurrentPosition(sendPosition,sendError);
   socket.emit("watcher2",	{num: "1/1"});
 });
 
