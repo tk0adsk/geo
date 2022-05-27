@@ -7,7 +7,9 @@
 <button onclick="getLocation()">Try It</button>
 
 <p id="demo"></p>
-
+   <div id="mydiv" style="border: solid red 2px">
+     <span id="myspan">foo</span>
+   </div>
 <script>
 var x = document.getElementById("demo");
 
@@ -23,9 +25,14 @@ function getLocation() {
 function showPosition(position) {
 	x.innerHTML="Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
-	var newcontent = document.createElement('div');
-    newcontent.innerHTML="Latitude: " + position.coords.latitude + 
+    var mydiv = document.getElementById("mydiv");
+    var newcontent = document.createElement('div');
+    newcontent.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
+
+    while (newcontent.firstChild) {
+        mydiv.appendChild(newcontent.firstChild);
+    }
 }
 </script>
 
