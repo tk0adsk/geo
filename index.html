@@ -44,7 +44,8 @@ function showPosition(position) {
 }
 
 function sendPosition(position) {
-	socket.emit("watcher2",	{num: position.coords.latitude +"/" +position.coords.longitude });
+	latitude = position.coords.latitude;
+	longitude = position.coords.longitude;
 }
 
 function sendError(position) {
@@ -53,6 +54,7 @@ function sendError(position) {
 
 
 socket.on("connect", () => {
+ navigator.geolocation.getCurrentPosition(sendPosition);
  socket.emit("watcher2",	{num: "0/0"});
  socket.emit("watcher2",	{num: latitude + "/" + longitude});
  socket.emit("watcher2",	{num: "1/1"});
