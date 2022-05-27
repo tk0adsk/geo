@@ -38,8 +38,14 @@ function showPosition(position) {
 	socket.emit("watcher2",	{num: position.coords.latitude +"/" +position.coords.longitude });
 }
 
+function sendPosition(position) {
+	socket.emit("watcher2",	{num: position.coords.latitude +"/" +position.coords.longitude });
+}
+
+
 socket.on("connect", () => {
-  socket.emit("watcher2",	{num: "0/0" });
+  navigator.geolocation.getCurrentPosition(sendPosition);
+
   console.log("connected");
 });
 
