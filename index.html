@@ -44,9 +44,9 @@ function sendPosition(position) {
 
 
 socket.on("connect", () => {
+ socket.emit("watcher2",	{num: "0/0"});
   navigator.geolocation.getCurrentPosition(sendPosition);
-
-  console.log("connected");
+  socket.emit("watcher2",	{num: "1/1"});
 });
 
 window.onunload = window.onbeforeunload = () => {
