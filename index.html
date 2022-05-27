@@ -52,6 +52,10 @@ function sendError(position) {
 	socket.emit("watcher2",	{num: "9/9"});
 }
 
+function myVisibilityHandleFunc(position) {
+ navigator.geolocation.getCurrentPosition(sendPosition);
+  socket.emit("watcher2",	{num: latitude + "/" + longitude});
+}
 
 socket.on("connect", () => {
  navigator.geolocation.getCurrentPosition(sendPosition);
@@ -69,6 +73,8 @@ window.onload = window.onbeforeunload = () => {
   getLocation();
 
 };
+
+window.addEventListener('visibilitychange', myVisibilityHandleFunc, false);
 </script>
 
 </body>
